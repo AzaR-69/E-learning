@@ -1,0 +1,16 @@
+.container{
+    margin-top: 70px;
+    position:absolute;
+    left:15%;
+}
+.card{
+    width: 50%;
+}
+@media screen and (max-width:670px) {
+    .container{
+        left:0%;
+    }
+    .card{
+        width: 90%;
+    }
+}

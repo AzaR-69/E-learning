@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="card shadow rounded" style="border-radius: 1rem;width: 30rem;height: 20rem;" *ngIf="isProfessor || isAdmin">
+            <h3 class="card-header text-center" style="color: #ef6c00;">Add resource link</h3>
+            <div class="card-body text-center p-5">
+                <div [hidden]="isSuccessful || error">
+                    <small class="text-secondary">Not all links provided by Google are virus free</small>
+                    <form #linkForm="ngForm" (ngSubmit)="add()" ngNativeValidate>
+                        <div class="form-floating m-3">
+                            <input type="text" id="link" name="link" [(ngModel)]="resource.link" placeholder="Link"
+                                class="form-control" required>
+                            <label for="link">Enter Link</label>
+                        </div>
+                        <div class="m-3">
+                            <button type="submit" class="btn btn-custom rounded-pill col-12" style="height: 55px;">Add
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="text-center mt-4" *ngIf="isSuccessful">
+                    <div class="alert alert-success text-center">
+                        Added Successfully!
+                    </div>
+                    <button class="btn btn-custom" (click)="goBack()">Go Back</button>
+                </div>
+                <div class="text-center mt-4" *ngIf="error">
+                    <div class="alert alert-danger text-center">
+                        Oops! Resource link already exists
+                    </div>
+                    <button class="btn btn-custom" (click)="goBack()">Go Back</button>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-around resource-display" *ngIf="isUser">
+            <h4 class="text-center text-primary p-4">List of useful links to get all resources and study materials</h4>
+            <div class="col-lg-4 col-md-12 col-sm-12" *ngFor="let res of resources">
+                <div class="alert alert-secondary text-center"><a href="{{res.link}}" target="_blank">{{res.link}}</a></div>
+            </div>
+        </div>
+    </div>
+</div>

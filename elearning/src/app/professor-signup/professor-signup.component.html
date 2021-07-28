@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card card-signin flex-row my-5 shadow" style="border-radius: 1rem;">
+                <div class="card-img-left d-none d-md-flex">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Professor Signup</h5>
+                    <small class="text-secondary text-center  ms-3">Details should match with your ID</small>
+                    <div class="form-signin">
+                        <form #registerForm="ngForm" (ngSubmit)="registerProfessor()" method="POST"
+                            enctype="multipart/form-data" ngNativeValidate *ngIf="uploadId && !isSuccessful">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" name="email" [(ngModel)]="professor.email"
+                                    placeholder="Email" required>
+                                <label for="email">Email ID</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="name" [(ngModel)]="professor.name"
+                                    placeholder="Name" required>
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" name="university" id="university"
+                                            placeholder="University" [(ngModel)]="professor.university" required>
+                                        <label for="university">University</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" name="dept" placeholder="Department"
+                                            [(ngModel)]="professor.department" required>
+                                        <label for="dept">Department</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="description" id="description"
+                                    placeholder="Description" [(ngModel)]="professor.description" required>
+                                <label for="description">Description</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="username" [(ngModel)]="professor.username"
+                                    placeholder="Username" minlength=6 maxlength=20 required>
+                                <label for="username">Username</label>
+                            </div>
+                            <small class="text-danger text-center fw-bold">{{error}}</small>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" name="password"
+                                    [(ngModel)]="professor.password" placeholder="Password" minlength=8 required>
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" name="password2" [(ngModel)]="password2"
+                                    placeholder="Confirm Password" style="font-size: small;" required>
+                                <label for="password2">Confirm Password</label>
+                            </div>
+                            <button type="submit" class="btn btn-custom col-5 mt-2 ms-3 mb-2">Register</button>
+                            <button type="button" class="btn btn-outline-danger col-5 mt-2 ms-5 mb-2"
+                                (click)="deleteProfessor()">Cancel</button>
+                        </form>
+                        <div *ngIf="!uploadId && !isSuccessful">
+                            <form #idForm="ngForm" (ngSubmit)="onUpload()" ngNativeValidate>
+                                <div class="mb-3 file-input">
+                                    <label for="imageFile" class="form-label">University ID card</label>
+                                    <input class="form-control" type="file" name="imageFile" id="imageFile"
+                                        (change)="onFileChanged($event)" style="border-radius: 25px;" required>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name="id" id="id" placeholder="Professor ID"
+                                        [(ngModel)]="professor.professorId" required>
+                                    <label for="id">Professor ID</label>
+                                </div>
+                                <button type="submit" class="btn btn-custom col-11 mt-2 ms-3 mb-2">Next</button>
+                            </form>
+                        </div>
+                        <div class="text-center" *ngIf="isSuccessful">
+                            <div class="alert alert-success text-center">
+                                Registered Successfully. You will recieve an email from us soon
+                            </div>
+                            <button class="btn btn-custom" [routerLink]="['/login']">Go Back</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

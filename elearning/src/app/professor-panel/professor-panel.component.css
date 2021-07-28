@@ -1,0 +1,19 @@
+.container{
+    margin-top: 5%;
+    position: absolute;
+    left: 17%;
+}
+.card{
+    width: 30rem;
+}
+@media screen and (max-width:670px) {
+    .container{
+        left: 0%;
+        margin-top: 18%;
+    }
+    .card{
+        width: 29rem;
+    }
+}
+
+

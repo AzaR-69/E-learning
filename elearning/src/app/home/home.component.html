@@ -1,0 +1,35 @@
+<nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark  py-3 p-3">
+  <a class="navbar-brand" href="dashboard">Welcome <span>{{username}}</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item dropdown pe-2" *ngIf="!isLoggedIn">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Signup
+        </a>
+        <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/registerUser']">User</a>
+          <a class="dropdown-item" [routerLink]="['/registerProfessor']">Professor</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="!isLoggedIn">
+        <a class="nav-link active" [routerLink]="['/login']">Login</a>
+      </li>
+      <li class="nav-item pe-4" *ngIf="isLoggedIn">
+        <a class="nav-link active" href="" [routerLink]="['/dashboard']"><span class="material-icons-outlined" style="font-size:x-large;">
+            home
+          </span></a>
+      </li>
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link active" href="" (click)="logout()"><span class="material-icons-outlined" style="font-size:x-large;">
+          logout
+        </span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

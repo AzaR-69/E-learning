@@ -1,0 +1,43 @@
+<div class="d-flex justify-content-center container">
+  <div class="card my-5 shadow bg-white rounded donor" [hidden]="chatbox">
+    <h3 class="card-header text-primary fw-bold">Chat Requests</h3>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+          <thead class="table-warning">
+            <tr>
+              <th scope="col">User ID</th>
+              <th scope="col">Username</th>
+              <th scope="col">Connect</th>
+              <th scope="col">Clear</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let msg of messages">
+              <td>{{msg.userId}}</td>
+              <td><b>{{msg.username}}</b> wants to connect</td>
+              <td><button class="btn btn-outline-success" (click)="enableChat(msg)">Connect</button></td>
+              <td><button class="btn btn-outline-danger rounded-pill" (click)="clearConversation(msg)"><span class="material-icons-outlined">
+                delete
+                </span></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="chat-box" *ngIf="chatbox">
+    <div class="container-fluid hero-page1">
+      <div class="chat-container">
+        <div class="row justify-content-center align-items-center">
+          <h5 class="display-5 text-center text-primary mt-3">Nine-tenths of education is encouragement</h5>
+          <div class="col-12 mt-5">
+            <div class="row justify-content-around">
+              <app-chat-box [message]="message"></app-chat-box>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

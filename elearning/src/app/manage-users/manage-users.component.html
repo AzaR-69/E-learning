@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-center container">
+    <div class="card my-5 shadow bg-white rounded donor" [hidden]="editable">
+        <h3 class="card-header fw-bold" style="color: #ef6c00;">Users:</h3>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-warning">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let user of users">
+                                <td>{{user.name}}</td>
+                                <td>{{user.username}}</td>
+                                <td>{{user.email}}</td>
+                                <td><button class="btn btn-outline-primary btn-sm rounded-pill m-1" (click)="edit(user)"><span class="material-icons-outlined">
+                                    edit
+                                    </span></button>
+                                </td> 
+                                <td> <button class="btn btn-outline-danger btn-sm rounded-pill" (click)="delete(user.email)"><span class="material-icons-outlined">
+                                    delete
+                                    </span></button></td>       
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card border-dark shadow bg-white rounded mb-3 editForm" *ngIf="editable" style="max-height:50rem;width: 25rem;">
+        <h5 class="card-header" style="font-weight: bold;color: #3f51b5;">Edit User Profile</h5>
+        <div class="card-body">
+        <form #editForm="ngForm">
+          <div class="form-group" ngNativeValidate>
+              <label for="name" >Name</label>
+              <input type="name" class="form-control" name="name" [(ngModel)]="user.name" placeholder="Enter your Full Name" required>
+          </div>
+          <div class="form-group">
+              <label for="uname" >Username</label>
+              <input type="text" class="form-control" name="uname" [(ngModel)]="user.username" placeholder="Enter your username" required>
+          </div>
+          <div class="form-group">
+              <label for="email" >Email address</label>
+              <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="Enter email" required>
+          </div>
+          <button type="button" style="width: 10rem;" class="btn btn-outline-success" (click)="updateProfile()">Submit</button>
+          <button type="button" class="btn btn-outline-danger" style="float: right;width: 10rem;" (click)="editable=!editable">Cancel</button>
+        </form>  
+        </div>
+      </div>    
+</div>

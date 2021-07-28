@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-center container">
+  <div class="card my-5 shadow bg-white rounded donor">
+    <h3 class="card-header fw-bold" style="color: #ef6c00;">Requests</h3>
+    <div class="card-body">
+      <div class="table-responsive" *ngIf="!verify; else verifyContent">
+        <table class="table table-bordered table-striped" *ngIf="professors.length">
+          <thead class="table-warning">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">University</th>
+              <th scope="col">Verify</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let professor of professors">
+            <tr *ngIf="!professor.status">
+              <td>{{professor.professorId}}</td>
+              <td>{{professor.name}}</td>
+              <td>{{professor.email}}</td>
+              <td>{{professor.university}}</td>
+              <td><button type="button" class="btn btn-outline-primary btn-sm ms-2" style="border-radius: 20px;"
+                  (click)="verifyDetails(professor)"><i class="bi bi-person-check-fill"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-template #verifyContent>
+        <img class="id-card" [src]="imageBlobUrl">
+        <form>
+          <label for="professorId">Professor ID</label>
+          <input class="form-control" type="text" name="professorId" [(ngModel)]="professorNew.professorId" disabled
+            readonly>
+          <label for="name">Name</label>
+          <input class="form-control" type="text" name="name" [(ngModel)]="professorNew.name" disabled readonly>
+          <label for="email">Email</label>
+          <input class="form-control" type="text" name="email" [(ngModel)]="professorNew.email" disabled readonly>
+          <label for="university">University</label>
+          <input class="form-control" type="text" name="university" [(ngModel)]="professorNew.university" disabled
+            readonly>
+          <label for="department">Department</label>
+          <input class="form-control" type="text" name="department" [(ngModel)]="professorNew.department" disabled
+            readonly>
+          <button class="btn btn-outline-primary" type="submit" style="float: left;width: 40%;"
+            (click)="approveMail(professorNew)">Accept</button>
+          <button class="btn btn-outline-danger w-40" type="submit" style="float: right;width: 40%;"
+            (click)="rejectMail(professorNew.email,professorNew.professorId)">Reject</button>
+        </form>
+      </ng-template>
+    </div>
+  </div>
+</div>

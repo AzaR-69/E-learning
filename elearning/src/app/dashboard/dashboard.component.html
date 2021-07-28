@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class=" col-lg-12 col-sm-12">
+      <div class="row">
+        <div class="col-md-4" *ngIf="isAdmin">
+          <div class="card shadow bg-body border-warning rounded " style="width: 25rem;">
+            <img
+              src="https://biz30.timedoctor.com/images/2012/11/managing-virtual-teams.jpg"
+              class="card-img-top" alt="Requests">
+            <div class="card-body text-center">
+              <h5 class="card-title text-center fw-bold">Manage Users</h5>
+              <hr>
+              <p class="text-center lead">Manage user accounts and modify it if needed</p>
+              <a [routerLink]="['/manage']" class="btn btn-custom rounded-pill w-75">Click here</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 admin-content" *ngIf="isAdmin">
+          <div class="card shadow bg-body border-warning rounded " style="width: 25rem;">
+            <img
+              src="https://thumbs.dreamstime.com/b/helpdesk-support-information-support-concept-businessman-typing-computer-85879450.jpg"
+              class="card-img-top" alt="Requests">
+            <div class="card-body text-center">
+              <h5 class="card-title text-center fw-bold">Professor Requests</h5>
+              <hr>
+              <p class="text-center lead">Manage requests submitted by Professors from various universities</p>
+              <a [routerLink]="['/professorRequest']" class="btn btn-custom rounded-pill w-75">Click here</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 professor-content" *ngIf="isProfessor">
+          <div class="card shadow bg-body border-warning rounded " style="width: 25rem;">
+            <img src="https://wp-media.petersons.com/blog/wp-content/uploads/2019/03/10123432/iStock-946556568.jpg"
+              class="card-img-top" style="height: 250px;" alt="Requests">
+            <div class="card-body text-center">
+              <h5 class="card-title text-center fw-bold">Interact with Students</h5>
+              <hr>
+              <p class="text-center lead">Talk with students who wants to know about your work</p>
+              <a [routerLink]="['/requests']" class="btn btn-custom rounded-pill w-75">Click here</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow bg-body border-warning rounded " style="width: 25rem;">
+            <img src="https://jordansoze.files.wordpress.com/2017/09/p1050264.jpg?w=620" style="height: 250px;"
+              class="card-img-top" alt="Materials">
+            <div class="card-body text-center">
+              <h5 class="card-title text-center fw-bold"><span *ngIf="isProfessor || isAdmin">Add</span> Beneficial Resources</h5>
+              <hr>
+              <p class="text-center lead">
+                <span *ngIf="isUser">Get official and legal links of websites to download
+                  study materials</span>
+                <span *ngIf="isProfessor || isAdmin">Add resource links for students to download study materials</span>  
+              </p>
+              <a [routerLink]="['/resources']" class="btn btn-custom rounded-pill w-75">Click here</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" *ngIf="isUser">
+          <div class="card shadow bg-body border-warning rounded " style="width: 25rem;">
+            <img
+              src="https://www.casita.com/images/pages/248/orig/effective-studentprofessor-interaction-guide-77585591720181221014835PM.jpeg"
+              class="card-img-top" alt="Connect with Professors">
+            <div class="card-body text-center">
+              <h5 class="card-title text-center fw-bold">Connect with Professors</h5>
+              <hr>
+              <p class="text-center lead">Get associated with professors of esteemed institutes & colleges and interact
+                with them</p>
+              <a [routerLink]="['/connect']" class="btn btn-custom rounded-pill w-75">Click here</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" *ngIf="isUser">
+          <div class="card shadow bg-body border-warning rounded " style="width: 25rem;">
+            <img
+              src="https://blogs.ibo.org/files/2019/08/Online-library-or-E-learning-concept.-Open-laptop-and-book-compilation.-Stock-Image-1200x800.jpg"
+              class="card-img-top" style="height: 250px;" alt="Ebooks">
+            <div class="card-body text-center">
+              <h5 class="card-title text-center fw-bold">Search for study materials</h5>
+              <hr>
+              <p class="text-center lead">Search for all resources and study materials of every course</p>
+              <a [routerLink]="['/ebooks']" class="btn btn-custom rounded-pill w-75">Click here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

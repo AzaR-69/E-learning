@@ -1,0 +1,49 @@
+<div class="container-fluid hero-page1">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="d-flex justify-content-center search-bar">
+          <h5 class="mt-2" style="color: #ef6c00;">Search for books</h5>
+          <input [formControl]="query" id="keyword" type="search" class="form-control query-field w-50 ms-2"
+            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter here" />
+          <select class="form-select form-select ms-2" [(ngModel)]="sort" aria-label=".form-select-lg example">
+            <option disabled selected>Sort by</option>
+            <option value="newest">Newest</option>
+            <option value="relevance">Relevance</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="items && loading" class="col-12 mt-5">
+        <div class="row justify-content-around">
+          <div *ngFor="let product of items" class="col-lg-3 col-md-6 col-sm-12 book-display">
+            <div class="card shadow rounded mb-4 me-2" *ngIf="product" style="width: 20rem;height: 22rem;">
+              <div class="card-body text-center">
+                <h6 class="card-title fw-bold">{{ product.volumeInfo.title }}</h6>
+                <hr>
+                <div class="row">
+                  <div class="col">
+                    <div class="image float-start">
+                      <img *ngIf="product.volumeInfo.imageLinks.thumbnail"
+                        src="{{ product.volumeInfo.imageLinks.thumbnail }}" style="height: 10rem;" alt="No image" />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="right-content mt-4">
+                      <span class="fw-bold text-secondary">Authors:</span><br>
+                      <div *ngFor="let aut of product.volumeInfo.authors">
+                        <span>{{ aut }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="{{product.volumeInfo.previewLink}}" class="btn btn-custom w-50 mt-3"
+                  target="_blank">Preview</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

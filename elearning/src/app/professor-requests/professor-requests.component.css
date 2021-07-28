@@ -1,0 +1,37 @@
+.container{
+    margin-top: 70px;
+    position:absolute;
+    left:15%;
+}
+.card{
+    width: 70%;
+}
+.form-control{
+    margin-bottom: 15px;
+}
+
+.id-card{
+    margin-left: 22%;
+    width:500px;
+}
+
+label{
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+@media screen and (max-width:670px) {
+    .container{
+        left: 0%;
+    }
+
+    .card{
+        width: 95%;
+    }
+
+    .id-card{
+        margin-left: 0%;
+        width:400px;
+    }
+}

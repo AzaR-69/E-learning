@@ -1,0 +1,107 @@
+<div class="message-box">
+    <div class="row no-gutters">
+        <div class="col-md-12">
+            <div class="card shadow w-75 rounded text-dark">
+                <div class="settings-tray">
+                    <div class="friend-drawer no-gutters friend-drawer--grey">
+                        <div class="user-content" *ngIf="isUser">
+                            <img class="profile-image rounded-pill ms-2 mt-2"
+                                src="https://static.vecteezy.com/system/resources/thumbnails/000/593/305/small/41_419.jpg"
+                                style="width: 50px;height: 50px;float: left;" alt="">
+                            <span class="text ms-2 mt-2">
+                                <h6 class="ms-4">{{professor.name}} <span
+                                        class="text-muted">{{professor.university}}, {{professor.department}}</span>
+                                </h6>
+
+                            </span>
+                        </div>
+                        <div class="professor-content" *ngIf="isProfessor">
+                            <img class="profile-image rounded-pill ms-2 mt-2"
+                                src="https://banner2.cleanpng.com/20180329/xzw/kisspng-computer-icons-student-learning-download-student-5abd00fd416dd0.857654511522335997268.jpg"
+                                style="width: 80px;height: 50px;float: left;" alt="">
+                            <span class="text ms-2 mt-2">
+                                <h6>{{message.username}}</h6>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+                <div class="chat-panel">
+                    <div class="user-chat">
+                        <div class="scrollbar" *ngIf="messages.length; else newMessage">
+                            <div *ngFor="let msg of messages">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3 offset-md-9" *ngIf="isUser">
+                                        <div class="chat-bubble chat-bubble--right">
+                                            {{msg.message}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" *ngIf="isProfessor">
+                                        <div class="chat-bubble chat-bubble--left">
+                                            {{msg.message}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters" *ngIf="msg.response">
+                                    <div class="col-md-3" *ngIf="isUser">
+                                        <div class="chat-bubble chat-bubble--left">
+                                            {{msg.response}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 offset-md-9" *ngIf="isProfessor">
+                                        <div class="chat-bubble chat-bubble--right">
+                                            {{msg.response}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="professor-chat" *ngIf="isProfessor">
+                        <div class="scrollbar" *ngIf="messages.length; else newMessage">
+                            <div *ngFor="let msg of messages">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <div class="chat-bubble chat-bubble--left">
+                                            {{msg.message}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row no-gutters">
+                                    <div class="col-md-3 offset-md-9" *ngIf="msg.response">
+                                        <div class="chat-bubble chat-bubble--right">
+                                            {{msg.response}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <ng-template #newMessage>
+                        <p class="text-center text-secondary mt-2">Your conversation starts here</p>
+                    </ng-template>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="chat-box-tray">
+                                <input type="text" [(ngModel)]="message.message" placeholder="Type your message here..."
+                                    *ngIf="isUser">
+                                <button class="btn btn-outline-success w-25" (click)="sendMessage()"
+                                    *ngIf="isUser"><span class="material-icons-outlined" style="float: left;">
+                                        send
+                                    </span>Send</button>
+                                <input type="text" [(ngModel)]="message.response"
+                                    placeholder="Type your message here..." *ngIf="isProfessor">
+                                <button class="btn btn-outline-success w-25" (click)="respond()"
+                                    *ngIf="isProfessor"><span class="material-icons-outlined" style="float: left;">
+                                        send
+                                    </span></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

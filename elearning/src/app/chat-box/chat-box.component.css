@@ -1,0 +1,68 @@
+.message-box .card{
+  left:15%;
+}
+
+.scrollbar{
+  overflow-y:scroll;
+  overflow-x: hidden;
+  height: 500px;
+}
+
+.chat-bubble {
+    padding: 10px 14px;
+    background: #eee;
+    margin: 10px 30px;
+    border-radius: 9px;
+    position: relative;
+    animation: fadeIn 1s ease-in;}
+    
+  @keyframes fadeIn {
+      0% {
+          opacity: 0;
+      }
+      100% {
+          opacity: 1;
+      }
+  }
+  .chat-bubble--right{
+    background-color: #f4511e;color: white;
+  }
+  .chat-box-tray {
+    background: #eee;
+    display: flex;
+    align-items: baseline;
+    padding: 10px 15px;
+    align-items: center;
+    margin-top: 19px;
+    bottom: 0;}
+    
+    input {
+      margin: 0 10px;
+      padding: 6px 2px;
+    }
+    
+    i {
+      color: grey;
+      font-size: 30px;
+      vertical-align: middle;
+    }
+  
+    .no-gutters {
+        padding: 0;
+      }
+      
+    
+    input {
+      border: none;
+      border-radius: 30px;
+      width: 80%;}
+    
+      ::placeholder {
+        color: #c5bdbd;
+        font-weight: 300;
+        margin-left: 20px;
+      }
+    
+      :focus {
+        outline: none;
+      }

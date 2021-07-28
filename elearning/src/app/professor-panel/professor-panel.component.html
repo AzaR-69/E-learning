@@ -1,0 +1,35 @@
+<div class="container-fluid hero-page1">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <h5 class="display-5 text-center text-primary" [hidden]="connect">Professors of different universities</h5>
+            <div *ngIf="professors.length" class="col-12 mt-5">
+                <div class="row justify-content-around">
+                    <div *ngFor="let professor of professors" [hidden]="connect"
+                        class="col-lg-6 col-md-6 col-sm-12 book-display">
+                        <div class="card shadow rounded mb-4 me-2 p-3">
+                            <div class="card-body text-start">
+                                <h5 class="card-title text-primary">{{professor.name}}</h5>
+                                <div class="university">
+                                    <span
+                                        class="fw-bold text-secondary">University:&nbsp;</span>{{professor.university}}
+                                </div>
+                                <div class="department">
+                                    <span
+                                        class="fw-bold text-secondary">Department:&nbsp;</span>{{professor.department}}
+                                </div>
+                                <small>{{professor.description}}</small>
+                                <ul class="nav position-absolute top-0 end-0 mt-5 me-2">
+                                    <li><button class="btn btn-success btn-sm me-2"
+                                            (click)="enableChat(professor)">Connect</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-box" *ngIf="connect">
+                        <app-chat-box [message]="message" ></app-chat-box>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
